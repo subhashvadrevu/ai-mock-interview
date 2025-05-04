@@ -2,10 +2,6 @@ import { MainRoutes } from "@/lib/helpers"
 import { cn } from "@/lib/utils"
 import { NavLink } from "react-router-dom"
 
-interface NavigationRoutesProps {
-    isMobile?: boolean
-}
-
 const NavigationRoutes = ({isMobile = false}) => {
   return (
     <ul className={cn('flex items-center gap-6', isMobile && "items-start flex-col gap-8")}>

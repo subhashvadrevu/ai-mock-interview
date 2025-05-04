@@ -6,12 +6,9 @@ import { doc, getDoc, serverTimestamp, setDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-interface AuthHandlerProps {
-    onReady: () => void
-}
 
 
-const AuthHandler = ({ onReady } : AuthHandlerProps) => {
+const AuthHandler = () => {
 
     const { isSignedIn } = useAuth();
     const { user } = useUser();
@@ -56,10 +53,6 @@ const AuthHandler = ({ onReady } : AuthHandlerProps) => {
                 }
     
             }
-            else {
-                onReady();
-            }
-    
         };
 
         storeUserData();

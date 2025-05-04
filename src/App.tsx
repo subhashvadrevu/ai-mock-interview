@@ -10,6 +10,12 @@ import SignInPage from "./routes/SignIn"
 import SignUpPage from "./routes/SignUp"
 import ProtectedRoutes from "./layouts/ProtectedRoutes"
 import MainLayout from "./layouts/MainLayout"
+import Dashboard from "./routes/Dashboard"
+import Generate from "./routes/Generate"
+import CreateEditPage from "./routes/CreateEditPage"
+import MockLoadPage from "./routes/MockLoadPage"
+import { MockInterviewPage } from "./routes/MockInterviewPage"
+import { Feedback } from "./routes/Feedback"
 // import { Button } from "./components/ui/button"
 
 const App = () => {
@@ -32,7 +38,18 @@ const App = () => {
   
 
         {/* protected routes */}
-        <Route element={<ProtectedRoutes><MainLayout /></ProtectedRoutes>} />
+        <Route element={<ProtectedRoutes><MainLayout /></ProtectedRoutes>}>
+          <Route element={<Generate />} path="/generate">
+            <Route element={<Dashboard />} index />
+            <Route path=":interviewId" element={<CreateEditPage />} />
+            <Route path="interview/:interviewId" element={<MockLoadPage />} />
+            <Route
+              path="interview/:interviewId/start"
+              element={<MockInterviewPage />}
+            />
+            <Route path="feedback/:interviewId" element={<Feedback />} />
+          </Route>
+        </Route>
 
       </Routes>
     </BrowserRouter>
