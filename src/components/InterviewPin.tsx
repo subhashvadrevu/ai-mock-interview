@@ -11,17 +11,20 @@ import { Badge } from "@/components/ui/badge"
 import { Eye, Newspaper, Sparkles } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { TooltipButton } from "./TooltipButton";
+import { ReactNode } from "react";
   
   
 
 interface InterviewPinProps {
     interview: Interview,
     onMockPage?: boolean,
+    children?: ReactNode;
 }
 
 const InterviewPin = ({
     interview,
     onMockPage = false,
+    children
 }: InterviewPinProps) => {
 
     const navigate = useNavigate();

@@ -14,6 +14,9 @@ type RouteParams = {
   interviewId: string;
 };
 
+// Optional: define this type to help casting the Firestore result
+type InterviewFromDB = Omit<Interview, "id">;
+
 export const MockInterviewPage = () => {
   const { interviewId } = useParams<RouteParams>();
   const [interview, setInterview] = useState<Interview | null>(null);
@@ -38,7 +41,7 @@ export const MockInterviewPage = () => {
           return;
         }
 
-        const data = snapshot.data();
+        const data = snapshot.data() as InterviewFromDB;
         if (!data) {
           console.warn("Interview data is empty.");
           navigate("/generate", { replace: true });
@@ -100,7 +103,7 @@ export const MockInterviewPage = () => {
         </Alert>
       </div>
 
-      {interview?.questions?.length > 0 && (
+      {interview?.questions?.length && interview.questions.length > 0 && (
         <div className="mt-4 w-full flex flex-col items-start gap-4">
           <QuestionSection questions={interview.questions} />
         </div>
