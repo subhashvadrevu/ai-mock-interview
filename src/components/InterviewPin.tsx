@@ -24,7 +24,6 @@ interface InterviewPinProps {
 const InterviewPin = ({
     interview,
     onMockPage = false,
-    children
 }: InterviewPinProps) => {
 
     const navigate = useNavigate();

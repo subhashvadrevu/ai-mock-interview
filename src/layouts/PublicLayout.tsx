@@ -2,7 +2,6 @@ import Container from "@/components/Container"
 import Footer from "@/components/Footer"
 import Header from "@/components/Header"
 import AuthHandler from "@/handlers/AuthHandler"
-import { useState } from "react"
 import { Outlet } from "react-router-dom"
 
 
